@@ -3,9 +3,7 @@ import pin from "../assets/pin.png";
 function Card(props) {
   return (
     <article className="post">
-      <div className="post__image-wrapper">
-        <img className="post__image" src={props.card.imageUrl} alt="" />
-      </div>
+      <img className="post__image" src={props.card.imageUrl} alt="" />
       <div className="post__details">
         <div className="post__location">
           <img className="post__pin" src={pin} alt="Pin" />
