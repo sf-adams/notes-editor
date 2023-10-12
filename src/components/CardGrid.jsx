@@ -10,7 +10,7 @@ function CardGrid() {
   })
   
   return (
-    <div>
+    <div className="card-grid">
       {cards}
     </div>
   );

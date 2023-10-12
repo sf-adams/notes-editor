@@ -1,10 +1,21 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
 /* HEADER */
 .header {
-  background-color: #F55A5A;
+  background-color: #f55a5a;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+  padding: 1.5rem 0;
 }
 
 .header__image {
@@ -17,9 +28,74 @@
 }
 
 /* CARD GRID */
+.card-grid {
+  padding: 4rem 2.5rem;
+}
 
-
-
+.card-grid > * + * {
+  border-top: 1px solid #f5f5f5;
+}
 
 /* CARD */
+.post {
+  display: flex;
+  gap: 2rem;
+  padding-top: 2rem;
+}
 
+.post__image-wrapper {
+  width: 300px;
+  overflow: hidden;
+}
+
+.post__image {
+  object-fit: contain;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+}
+
+.post__details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.post__location {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.post__pin {
+  width: 0.5rem;
+}
+
+.post__country {
+  text-transform: uppercase;
+  letter-spacing: 0.125rem;
+  font-size: 0.825rem;
+}
+
+.post__location-link {
+  color: #918e9b;
+  text-decoration: underline;
+  margin-left: 0.5rem;
+  font-size: 0.825rem;
+}
+
+.post__location-link:hover {
+  color: #f55a5a;
+}
+
+.post__title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.post__date {
+  font-size: 0.825rem;
+  font-weight: 700;
+}
