@@ -1,9 +1,14 @@
 export default function Sidebar(props) {
-  const noteElements = props.notes.map((note, index) => {
+  const noteElements = props.notes.map((note) => {
     return (
       <div key={note.id}>
-        <div className={`title`}>
-          <h4>{note.body}</h4>
+        <div
+          className={`title ${
+            note.id === props.currentNote.id ? "selected-note" : ""
+          }`}
+          onClick={() => props.setCurrentNoteId(note.id)}
+        >
+          <h4 className="text-snippet">{note.body}</h4>
         </div>
       </div>
     );

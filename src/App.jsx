@@ -22,7 +22,21 @@ function App() {
     setCurrentNoteId(newNote.id);
   }
 
-  function updateNote() {}
+  function updateNote(text) {
+    // Put the most recently-modified note at the top
+    setNotes((oldNotes) => {
+      const newArray = [];
+      for (let i = 0; i < oldNotes.length; i++) {
+        const oldNote = oldNotes[i];
+        if (oldNote.id === currentNoteId) {
+          newArray.unshift({ ...oldNote, body: text });
+        } else {
+          newArray.push(oldNote);
+        }
+      }
+      return newArray;
+    });
+  }
 
   function findCurrentNote() {
     return (
@@ -36,15 +50,19 @@ function App() {
     <main>
       {notes.length > 0 ? (
         <div>
-          <Split sizes={[30, 70]} direction="horizontal">
+          <Split
+            className="split"
+            sizes={[30, 70]}
+            gutterSize={15}
+            direction="horizontal"
+          >
             <Sidebar
               notes={notes}
-              findCurrentNote={findCurrentNote}
+              currentNote={findCurrentNote}
               createNewNote={createNewNote}
             />
-            <div>Editor</div>
+            <Editor currentNote={findCurrentNote()} updateNote={updateNote} />
           </Split>
-          {/* <Editor currentNote={findCurrentNote()}/> */}
         </div>
       ) : (
         <div className="no-notes">
