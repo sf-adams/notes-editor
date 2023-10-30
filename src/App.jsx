@@ -1,14 +1,29 @@
+import { useState } from "react";
 import "./App.css";
-import CardGrid from "./components/CardGrid";
-import Header from "./components/Header";
-
+import Editor from "./components/Editor";
+import Sidebar from "./components/Sidebar";
 
 function App() {
+  const [notes, setNotes] = useState([]);
+
+  function createNewNote() {
+    const newNote = {};
+  }
+
   return (
-    <>
-      <Header />
-      <CardGrid />
-    </>
+    <main>
+      {notes.length > 0 ? (
+        <div>
+          <Sidebar />
+          <Editor />
+        </div>
+      ) : (
+        <div>
+          <p>There are currently no notes in the editor</p>
+          <button onClick={createNewNote}>Create one now</button>
+        </div>
+      )}
+    </main>
   );
 }
 
