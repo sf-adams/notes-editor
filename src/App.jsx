@@ -3,6 +3,7 @@ import "./App.css";
 import Editor from "./components/Editor";
 import Sidebar from "./components/Sidebar";
 import { nanoid } from "nanoid";
+import Split from "react-split";
 
 function App() {
   const [notes, setNotes] = useState([]);
@@ -24,27 +25,33 @@ function App() {
   function updateNote() {}
 
   function findCurrentNote() {
-    console.log("This runs")
-    return notes.find((note) => {
-      return note.id === currentNoteId
-
-    });
+    return (
+      notes.find((note) => {
+        return note.id === currentNoteId;
+      }) || notes[0]
+    );
   }
-
-  console.log(notes)
 
   return (
     <main>
       {notes.length > 0 ? (
         <div>
-          <button onClick={createNewNote}>Create one now</button>
-          {/* <Sidebar findCurrentNote={findCurrentNote} /> */}
-          <Editor currentNote={findCurrentNote()}/>
+          <Split sizes={[30, 70]} direction="horizontal">
+            <Sidebar
+              notes={notes}
+              findCurrentNote={findCurrentNote}
+              createNewNote={createNewNote}
+            />
+            <div>Editor</div>
+          </Split>
+          {/* <Editor currentNote={findCurrentNote()}/> */}
         </div>
       ) : (
-        <div>
+        <div className="no-notes">
           <p>There are currently no notes in the editor</p>
-          <button onClick={createNewNote}>Create one now</button>
+          <button className="first-note" onClick={createNewNote}>
+            Create one now
+          </button>
         </div>
       )}
     </main>
