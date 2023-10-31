@@ -1,7 +1,7 @@
 export default function Sidebar(props) {
   const noteElements = props.notes.map((note) => {
     return (
-      <div key={note.id}>
+      <div className="sidebar__notes" key={note.id}>
         <div
           className={`title ${
             note.id === props.currentNote.id ? "selected-note" : ""

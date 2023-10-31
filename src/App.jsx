@@ -66,7 +66,7 @@ function App() {
         </div>
       ) : (
         <div className="no-notes">
-          <p>There are currently no notes in the editor</p>
+          <h1>There are currently no notes in the editor</h1>
           <button className="first-note" onClick={createNewNote}>
             Create one now
           </button>
