@@ -1,3 +1,5 @@
+import Trash from "../assets/trash-icon.svg";
+
 export default function Sidebar(props) {
   const noteElements = props.notes.map((note) => {
     return (
@@ -9,6 +11,12 @@ export default function Sidebar(props) {
           onClick={() => props.setCurrentNoteId(note.id)}
         >
           <h4 className="text-snippet">{note.body}</h4>
+          <button
+            className="delete-btn"
+            onClick={() => props.deleteNote(note.id)}
+          >
+            <img src={Trash} className="gg-trash trash-icon"/>
+          </button>
         </div>
       </div>
     );
@@ -17,7 +25,7 @@ export default function Sidebar(props) {
     <section className="pane sidebar">
       <div className="sidebar--header">
         <h3>Notes</h3>
-        <button className="new-note" onClick={props.createNewNote}>
+        <button className="new-note" onClick={props.newNote}>
           +
         </button>
       </div>
